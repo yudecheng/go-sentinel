@@ -3,7 +3,7 @@ go-sentinel
 
 Redis Sentinel support for [redigo](https://github.com/garyburd/redigo) library.
 
-**API is unstable and can change in any moment** – use with tools like Glide, Godep etc.
+**API is unstable and can change at any moment** – use with tools like Glide, Godep etc.
 
 Documentation
 -------------
