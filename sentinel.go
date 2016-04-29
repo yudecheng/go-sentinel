@@ -48,7 +48,7 @@ import (
 //  			return c, nil
 //  		},
 //  		TestOnBorrow: func(c redis.Conn, t time.Time) error {
-//  			if !redis.TestRole(c, "master") {
+//  			if !sentinel.TestRole(c, "master") {
 //  				return errors.New("Role check failed")
 //  			} else {
 //  				return nil
