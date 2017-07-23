@@ -347,7 +347,9 @@ func queryForSlaves(conn redis.Conn, masterName string) ([]string, error) {
 		if err != nil {
 			return slaves, err
 		}
-		slaves = append(slaves, fmt.Sprintf("%s:%s", sm["ip"], sm["port"]))
+		if isSlaveAvailable(sm["flags"]) {
+			slaves = append(slaves, fmt.Sprintf("%s:%s", sm["ip"], sm["port"]))
+		}
 	}
 	return slaves, nil
 }
@@ -375,4 +377,8 @@ func stringInSlice(str string, slice []string) bool {
 		}
 	}
 	return false
+}
+
+func isSlaveAvailable(flags string) bool {
+	return !strings.Contains(flags, "disconnected") && !strings.Contains(flags, "s_down")
 }
